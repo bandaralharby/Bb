@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تقرير PDF</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>إنشاء تقرير PDF</h1>
+    <form id="reportForm">
+        <label>اسم التقرير:</label>
+        <input type="text" id="reportName" required>
+
+        <label>تاريخ التقرير:</label>
+        <input type="date" id="reportDate" required>
+
+        <label>مكان التنفيذ:</label>
+        <input type="text" id="reportPlace" required>
+
+        <label>صورة 1:</label>
+        <input type="file" id="image1" accept="image/*" required>
+
+        <label>صورة 2:</label>
+        <input type="file" id="image2" accept="image/*" required>
+
+        <label>اسم المعلم:</label>
+        <input type="text" id="teacherName" required>
+
+        <label>اسم المدير:</label>
+        <input type="text" id="directorName" required>
+
+        <button type="submit">إنشاء PDF</button>
+    </form>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

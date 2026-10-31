@@ -132,17 +132,21 @@ const functionTableSlide={title:"جدول الدوال المستخدمة مع �
 const firstFunction=slides.findIndex(s=>s.title==="دالة len()");
 if(firstFunction>=0)slides.splice(firstFunction,0,functionTableSlide);
 // ترتيب صريح: كل دروس القوائم ودوالها أولًا، ثم درس الصفوف مستقلًا
-const firstLists=slides.findIndex(s=>s.kind==='concept');
-const firstLibraries=slides.findIndex(s=>s.kind==='library');
-if(firstLists>=0&&firstLibraries>firstLists){
- const unitSlides=slides.slice(firstLists,firstLibraries);
- const tupleSlides=unitSlides.filter(s=>s.kind==='tuple'||s.title.includes('صفوف البيانات')||s.title.includes('Tuple'));
- const listSlides=unitSlides.filter(s=>!tupleSlides.includes(s));
- const quizIndex=listSlides.findIndex(s=>s.kind==='quizlist');
- if(quizIndex>=0){const [quiz]=listSlides.splice(quizIndex,1);listSlides.push(quiz)}
- listSlides.forEach(s=>s.section='القوائم');
- tupleSlides.forEach(s=>s.section='صفوف البيانات');
- slides.splice(firstLists,unitSlides.length,...listSlides,...tupleSlides);
+// ترتيب الدرس بحسب الكتاب: القوائم ثم صفوف البيانات ثم المكتبات
+// تجميع الصفوف مستقلاً عن موقعها السابق؛ لا نعتمد على أول شريحة من نوع library
+const isTupleSlide=s=>s.kind==='tuple'||s.title.includes('صفوف البيانات')||s.title.includes('Tuple');
+const tupleSectionSlides=slides.filter(isTupleSlide);
+for(let i=slides.length-1;i>=0;i--){if(isTupleSlide(slides[i]))slides.splice(i,1)}
+const firstLibrarySection=slides.findIndex(s=>s.section==='المكتبات البرمجية');
+if(firstLibrarySection>=0){
+ const beforeLibrary=slides.slice(0,firstLibrarySection);
+ const listSectionSlides=beforeLibrary.filter(s=>s.section==='القوائم وصفوف البيانات'||s.section==='القوائم');
+ const otherBefore=beforeLibrary.filter(s=>!listSectionSlides.includes(s));
+ listSectionSlides.forEach(s=>s.section='القوائم');
+ tupleSectionSlides.forEach(s=>s.section='صفوف البيانات');
+ slides.splice(0,firstLibrarySection,...otherBefore,...listSectionSlides,...tupleSectionSlides);
+}else{
+ tupleSectionSlides.forEach(s=>{s.section='صفوف البيانات';slides.push(s)});
 }
 // حذف شرائح شرح الدوال المنفردة بعد دمجها مع الأمثلة في الجدول الشامل
 const coveredFunctionTitles=new Set([

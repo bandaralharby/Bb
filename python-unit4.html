@@ -128,7 +128,7 @@ placeBefore('file',bookAdditions.filter(x=>x.section==='الملفات'));
 placeBefore('project',bookAdditions.filter(x=>x.section==='مشروع الوحدة'));
 
 // جدول الدوال كما ورد في صفحات ١٣٧ و١٣٩ من الكتاب، قبل الأمثلة التطبيقية
-const functionTableSlide={title:"جدول الدوال المستخدمة مع القوائم",section:"القوائم وصفوف البيانات",desc:"تعرّف أولًا على اسم كل دالة واستخدامها كما في الكتاب، ثم انتقل إلى مثال مستقل يوضح عملها ونتيجتها.",kind:"functionsTable"};
+const functionTableSlide={title:"جدول الدوال المستخدمة مع القوائم",section:"القوائم وصفوف البيانات",desc:"جدول شامل يعرض اسم كل دالة واستخدامها ومثالها البرمجي، مع إمكانية كشف النتيجة عند الحاجة.",kind:"functionsTable"};
 const firstFunction=slides.findIndex(s=>s.title==="دالة len()");
 if(firstFunction>=0)slides.splice(firstFunction,0,functionTableSlide);
 // ترتيب صريح: كل دروس القوائم ودوالها أولًا، ثم درس الصفوف مستقلًا
@@ -144,6 +144,15 @@ if(firstLists>=0&&firstLibraries>firstLists){
  tupleSlides.forEach(s=>s.section='صفوف البيانات');
  slides.splice(firstLists,unitSlides.length,...listSlides,...tupleSlides);
 }
+// حذف شرائح شرح الدوال المنفردة بعد دمجها مع الأمثلة في الجدول الشامل
+const coveredFunctionTitles=new Set([
+'دالة len()','دالة sum()','دالتا max() وmin()',
+'إنشاء قائمة فارغة ثم إضافة العناصر',
+'الدالة remove(x): حذف بالقيمة','الدالة count(x): عدّ التكرارات',
+'الدالة sort(): ترتيب تصاعدي','الدالة reverse(): عكس الترتيب',
+'الدالة clear(): إفراغ القائمة'
+]);
+for(let i=slides.length-1;i>=0;i--){if(coveredFunctionTitles.has(slides[i].title))slides.splice(i,1)}
 const groups=[...new Set(slides.map(x=>x.section))];let page=(()=>{try{let n=Number(localStorage.getItem('python_unit_slide'));return Number.isInteger(n)&&n>=0&&n<slides.length?n:0}catch{return 0}})();
 const $=id=>document.getElementById(id);const code=(s)=>'<pre>'+s.replaceAll('&','&amp;').replaceAll('<','&lt;')+'</pre>';const btn=(label,fn)=>'<button class="action" onclick="'+fn+'">'+label+'</button>';const out='<output id="out">اضغط على الزر لتجربة المثال</output>';
 function demo(s){let k=s.kind, t='';switch(k){

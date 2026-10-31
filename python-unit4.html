@@ -85,6 +85,20 @@ placeBefore('project',bookAdditions.filter(x=>x.section==='مشروع الوحد
 const functionTableSlide={title:"جدول الدوال المستخدمة مع القوائم",section:"القوائم وصفوف البيانات",desc:"تعرّف أولًا على اسم كل دالة واستخدامها كما في الكتاب، ثم انتقل إلى مثال مستقل يوضح عملها ونتيجتها.",kind:"functionsTable"};
 const firstFunction=slides.findIndex(s=>s.title==="دالة len()");
 if(firstFunction>=0)slides.splice(firstFunction,0,functionTableSlide);
+// افصل القوائم وصفوف البيانات في ترتيب الدروس وشريط العناوين العلوي
+const tupleStart=slides.findIndex(s=>s.kind==='tuple');
+const nextLesson=slides.findIndex((s,i)=>i>tupleStart&&s.section==='المكتبات البرمجية');
+if(tupleStart>=0){
+ for(let i=tupleStart;i<(nextLesson<0?slides.length:nextLesson);i++){
+  slides[i].section='صفوف البيانات';
+ }
+ const tupleReview=slides.findIndex(s=>s.kind==='quizlist');
+ if(tupleReview>=0&&tupleReview<tupleStart)slides[tupleReview].section='القوائم';
+}
+slides.forEach((s,i)=>{
+ if(s.section==='القوائم وصفوف البيانات')s.section='القوائم';
+ if(s.section==='صفوف البيانات'&&s.title.includes('القوائم')&&!s.title.includes('صفوف'))s.title=s.title.replace('القوائم','صفوف البيانات');
+});
 const groups=[...new Set(slides.map(x=>x.section))];let page=(()=>{try{let n=Number(localStorage.getItem('python_unit_slide'));return Number.isInteger(n)&&n>=0&&n<slides.length?n:0}catch{return 0}})();
 const $=id=>document.getElementById(id);const code=(s)=>'<pre>'+s.replaceAll('&','&amp;').replaceAll('<','&lt;')+'</pre>';const btn=(label,fn)=>'<button class="action" onclick="'+fn+'">'+label+'</button>';const out='<output id="out">اضغط على الزر لتجربة المثال</output>';
 function demo(s){let k=s.kind, t='';switch(k){

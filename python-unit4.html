@@ -31,6 +31,41 @@ footer button{padding:7px 16px;font-size:14px}
 .tree{padding:8px 3px}.tree-root,.tree-head,.tree-subhead{padding:8px 6px}.tree-branches{margin-top:17px;gap:10px}.tree-branch{padding:8px}.tree-leaves{gap:5px;margin-top:7px}.tree-leaves>div{padding:6px 4px}
 @media(min-width:900px) and (max-height:800px){header{padding:5px 3vw}.tabs{padding:5px 3vw}.wrap{margin-top:8px}.card{padding:14px 22px}.card h2{margin:7px 0;font-size:27px}.lead{margin:6px 0 10px}.explain{margin:9px 0;padding:11px 15px}.demo{margin-top:9px}}
 @media(max-width:600px){header{padding:9px 14px}.wrap{margin:9px auto 74px;padding:0 9px}.card{padding:13px}.card h2{font-size:25px}.tag{font-size:15px}.tabs{padding:6px 9px}.explain,.demo{padding:11px}.syntax-visual{gap:4px}}
+</style><style id="classroom-readability-v2">
+/* Clear multi-line header rather than compressed text */
+header{padding:16px 24px 15px;text-align:center}
+header small{display:block;font-size:clamp(16px,1.4vw,20px);font-weight:650;line-height:1.6;opacity:.95}
+header h1{font-size:clamp(27px,2.8vw,40px);line-height:1.35;margin:5px 0 7px;letter-spacing:0}
+header>div{font-size:clamp(16px,1.3vw,19px);line-height:1.5;opacity:.94}
+.tabs{padding:10px 20px;gap:9px;justify-content:flex-start}
+.tabs button{font-size:clamp(16px,1.25vw,19px);font-weight:700;line-height:1.5;padding:9px 16px;flex-shrink:0}
+body{font-size:clamp(18px,1.5vw,21px);line-height:1.7}
+.wrap{margin-top:14px}
+.card h2{font-size:clamp(29px,3vw,41px);line-height:1.4;margin:10px 0 13px}
+.tag{font-size:clamp(17px,1.4vw,21px)}
+.lead{font-size:clamp(20px,1.75vw,24px);line-height:1.8}
+.explain h3,.demo h3{font-size:clamp(21px,1.95vw,27px)}
+.explain p{font-size:clamp(19px,1.65vw,23px);line-height:1.8}
+pre{font-size:clamp(17px,1.55vw,21px);line-height:1.65}
+.syntax-visual{font-size:clamp(19px,2.3vw,29px)}
+.tile,.chip,button.action,footer button,input,select,textarea,output,.result{font-size:clamp(17px,1.5vw,21px)}
+.hint{font-size:17px}
+.tree{font-size:clamp(17px,1.4vw,21px)}
+.tree-leaves>div{font-size:.93em}
+footer{padding-top:9px;padding-bottom:9px}
+@media(max-width:650px){
+header{padding:13px 12px;text-align:center}
+header h1{font-size:27px}
+header small,header>div{font-size:16px}
+.tabs{padding:8px 10px}
+.tabs button{font-size:16px;padding:8px 12px}
+body{font-size:18px}
+.card h2{font-size:29px}
+.lead,.explain p{font-size:19px}
+.explain h3,.demo h3{font-size:21px}
+pre{font-size:16px}
+.tree{font-size:16px}
+}
 </style></head><body><header><small>المهارات الرقمية • الصف الثالث المتوسط</small><h1>الوحدة الرابعة: البرمجة مع بايثون</h1><div>تعلّم • جرّب • اكتشف • طبّق</div></header><nav class="tabs" id="tabs"></nav><div id="progress"><div id="bar"></div></div><main class="wrap"><article class="card" id="slide"></article></main><footer><button id="prev">→ السابق</button><b id="counter"></b><button id="next">التالي ←</button></footer><script>
 const slides=[{"title": "انطلاقة إلى عالم بايثون", "section": "مقدمة الوحدة", "desc": "تتعلم في هذه الوحدة كيف تنظم البيانات، وتستفيد من المكتبات، وتصمم واجهات رسومية، وتحفظ المعلومات في ملفات.", "kind": "intro"}, {"title": "هياكل البيانات", "section": "القوائم وصفوف البيانات", "desc": "هي طرق لتنظيم البيانات وتخزينها؛ منها البسيطة مثل الأعداد والنصوص، وغير البسيطة مثل القوائم والقواميس.", "kind": "concept"}, {"title": "أنشئ قائمة", "section": "القوائم وصفوف البيانات", "desc": "القائمة تجمع عناصر مرتبة بين قوسين مربعين، ويمكن تغيير عناصرها وإضافة عناصر جديدة.", "kind": "list"}, {"title": "الوصول إلى عناصر القائمة", "section": "القوائم وصفوف البيانات", "desc": "يبدأ فهرس عناصر القائمة من الصفر؛ العنصر الأول رقمه 0 والثاني رقمه 1.", "kind": "index"}, {"title": "إضافة وحذف العناصر", "section": "القوائم وصفوف البيانات", "desc": "تضيف append عنصرًا في نهاية القائمة، وتحذف pop عنصرًا من القائمة.", "kind": "append"}, {"title": "صفوف البيانات Tuple", "section": "القوائم وصفوف البيانات", "desc": "صف البيانات يشبه القائمة، لكنه غير قابل لتعديل عناصره بعد إنشائه، ويُكتب عادة بين قوسين دائريين.", "kind": "tuple"}, {"title": "اختبر فهمك: القوائم", "section": "القوائم وصفوف البيانات", "desc": "ما رقم فهرس أول عنصر في قائمة بايثون؟", "kind": "quiz:0|1|2|0"}, {"title": "لماذا نستخدم المكتبات؟", "section": "المكتبات البرمجية", "desc": "المكتبة مجموعة تعليمات برمجية جاهزة نعيد استخدامها لتوفير الوقت والجهد.", "kind": "concept"}, {"title": "المكتبات القياسية", "section": "المكتبات البرمجية", "desc": "تضم بايثون مكتبات جاهزة، مثل math للحسابات وrandom للاختيار العشوائي.", "kind": "library"}, {"title": "جرّب دوال الرياضيات", "section": "المكتبات البرمجية", "desc": "استخدم دالة الجذر التربيعي من مكتبة math لحساب جذر عدد.", "kind": "sqrt"}, {"title": "الاختيار العشوائي", "section": "المكتبات البرمجية", "desc": "يمكن اختيار قيمة عشوائية من مجموعة قيم باستخدام random.choice.", "kind": "random"}, {"title": "مدير الحزم pip", "section": "المكتبات البرمجية", "desc": "يُستخدم pip لتثبيت مكتبات إضافية عند توفر بيئة بايثون مناسبة واتصال مطلوب.", "kind": "pip"}, {"title": "اختبر فهمك: المكتبات", "section": "المكتبات البرمجية", "desc": "ما فائدة المكتبات البرمجية؟", "kind": "quiz:إعادة استخدام أكواد جاهزة|حذف بايثون|منع كتابة البرامج|0"}, {"title": "مرحبًا بالواجهات الرسومية", "section": "بناء الواجهات الرسومية", "desc": "تساعد Tkinter في بناء نوافذ وعناصر تفاعل، مثل الأزرار ولوحة الرسم Canvas.", "kind": "gui"}, {"title": "لوحة الرسم Canvas", "section": "بناء الواجهات الرسومية", "desc": "تحدد مساحة الرسم، لون الخلفية، وأبعاد النافذة قبل رسم الأشكال.", "kind": "canvas"}, {"title": "الإحداثيات", "section": "بناء الواجهات الرسومية", "desc": "تُحدد مواضع الرسم باستخدام قيم x وy؛ تزداد x إلى اليمين وy إلى الأسفل.", "kind": "coords"}, {"title": "رسم الأشكال", "section": "بناء الواجهات الرسومية", "desc": "يمكن رسم خطوط ومستطيلات وأشكال بيضاوية على Canvas.", "kind": "shapes"}, {"title": "الأحداث والتفاعل", "section": "بناء الواجهات الرسومية", "desc": "تستجيب الواجهات الرسومية لأحداث مثل النقر بالفأرة والضغط على لوحة المفاتيح.", "kind": "events"}, {"title": "اختبر فهمك: Tkinter", "section": "بناء الواجهات الرسومية", "desc": "ما العنصر المستخدم للرسم داخل نافذة Tkinter؟", "kind": "quiz:Canvas|print|input|0"}, {"title": "ما القاموس؟", "section": "القواميس", "desc": "القاموس يخزن أزواجًا من المفاتيح والقيم، مثل اسم الطالب ودرجته.", "kind": "dict"}, {"title": "الوصول إلى القيم", "section": "القواميس", "desc": "يمكن قراءة قيمة القاموس بذكر مفتاحها بين أقواس مربعة.", "kind": "dictget"}, {"title": "تعديل القاموس", "section": "القواميس", "desc": "يمكن إضافة مفتاح جديد أو تغيير قيمة مفتاح موجود، وكذلك حذف مفتاح.", "kind": "dictedit"}, {"title": "اختبر فهمك: القواميس", "section": "القواميس", "desc": "أي تركيب يربط اسمًا بقيمة؟", "kind": "quiz:القاموس|العدد الصحيح|السلسلة النصية|0"}, {"title": "القوائم المتداخلة", "section": "القوائم المتداخلة", "desc": "يمكن أن تحتوي قائمة على قائمة أخرى، مثل جدول درجات عدة طلاب.", "kind": "nested"}, {"title": "الوصول إلى قيمة متداخلة", "section": "القوائم المتداخلة", "desc": "استخدم فهرسين متتاليين: الأول لاختيار القائمة الداخلية، والثاني لاختيار عنصر منها.", "kind": "nestedget"}, {"title": "تحدي درجات الطلاب", "section": "القوائم المتداخلة", "desc": "تأمل الجدول، ثم اختر الصف والعمود لعرض الدرجة المقابلة.", "kind": "matrix"}, {"title": "لماذا نستخدم الملفات؟", "section": "الملفات", "desc": "تُفقد البيانات الموجودة في ذاكرة التشغيل عند إغلاق البرنامج، بينما تبقى البيانات المحفوظة في الملفات.", "kind": "concept"}, {"title": "فتح ملف نصي", "section": "الملفات", "desc": "تستخدم open لفتح الملف، مع تحديد نمط مثل r للقراءة أو w للكتابة أو a للإلحاق.", "kind": "file"}, {"title": "الكتابة والقراءة", "section": "الملفات", "desc": "يمكن كتابة نص إلى ملف وقراءته لاحقًا. هذا المثال يحاكي ملفًا نصيًا داخل الدرس دون الوصول إلى ملفات جهازك.", "kind": "filedemo"}, {"title": "مشروع الوحدة: حساب الدرجات", "section": "مشروع الوحدة", "desc": "أنشئ قوائم درجات للرياضيات والعلوم والدراسات الاجتماعية، ثم احسب المتوسط وحدد المادة الأعلى.", "kind": "project"}, {"title": "تحدي الختام", "section": "التقويم النهائي", "desc": "أكملت رحلة البرمجة مع بايثون. اختبر مهاراتك ثم جرّب كتابة البرامج على بيئة بايثون حقيقية.", "kind": "final"}];
 const groups=[...new Set(slides.map(x=>x.section))];let page=(()=>{try{let n=Number(localStorage.getItem('python_unit_slide'));return Number.isInteger(n)&&n>=0&&n<slides.length?n:0}catch{return 0}})();

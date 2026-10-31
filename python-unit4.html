@@ -157,6 +157,8 @@ const coveredFunctionTitles=new Set([
 'الدالة clear(): إفراغ القائمة'
 ]);
 for(let i=slides.length-1;i>=0;i--){if(coveredFunctionTitles.has(slides[i].title))slides.splice(i,1)}
+// إزالة الشريحة المكررة عن عدم قابلية تعديل الصفوف؛ تبقى شريحة شرح Tuple الأساسية
+for(let i=slides.length-1;i>=0;i--){if(slides[i].title==='صفوف البيانات: عدم قابلية التعديل')slides.splice(i,1)}
 const groups=[...new Set(slides.map(x=>x.section))];let page=(()=>{try{let n=Number(localStorage.getItem('python_unit_slide'));return Number.isInteger(n)&&n>=0&&n<slides.length?n:0}catch{return 0}})();
 const $=id=>document.getElementById(id);const code=(s)=>'<pre>'+s.replaceAll('&','&amp;').replaceAll('<','&lt;')+'</pre>';const btn=(label,fn)=>'<button class="action" onclick="'+fn+'">'+label+'</button>';const out='<output id="out">اضغط على الزر لتجربة المثال</output>';
 function demo(s){let k=s.kind, t='';switch(k){
